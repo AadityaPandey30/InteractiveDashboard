@@ -2,3 +2,10 @@
   text-align: center;
 }
 
+.card{
+  transition-duration: 0.7s;
+}
+
+.card:hover{
+scale:1.05;
+}

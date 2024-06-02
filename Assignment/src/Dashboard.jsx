@@ -61,7 +61,7 @@ const Dashboard = () => {
     datasets: [{
       label: 'Event Types',
       data: Object.values(chartData.eventTypes),
-      backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      backgroundColor: 'rgba(102, 255, 191, 0.6)',
       borderColor: 'rgba(75, 192, 192, 1)',
       borderWidth: 1,
     }],
@@ -72,8 +72,8 @@ const Dashboard = () => {
     datasets: [{
       label: 'Signatures',
       data: Object.values(chartData.signatures),
-      backgroundColor: 'rgba(153, 102, 255, 0.6)',
-      borderColor: 'rgba(153, 102, 255, 1)',
+      backgroundColor: 'rgba(102, 204, 255, 0.6)',
+      borderColor: 'rgba(102, 204, 255, 1)',
       borderWidth: 1,
     }],
   };
@@ -94,8 +94,8 @@ const Dashboard = () => {
     datasets: [{
       label: 'Source IPs',
       data: Object.values(chartData.srcIps),
-      backgroundColor: 'rgba(255, 99, 132, 0.6)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: 'rgba(255, 50, 100, 0.6)',
+      borderColor: 'rgba(255, 50, 100, 1)',
       borderWidth: 1,
     }],
   };
@@ -105,57 +105,59 @@ const Dashboard = () => {
     datasets: [{
       label: 'Destination IPs',
       data: Object.values(chartData.destIps),
-      backgroundColor: 'rgba(54, 162, 235, 0.6)',
-      borderColor: 'rgba(54, 162, 235, 1)',
+      backgroundColor: 'rgba(128, 255, 102, 0.6)',
+      borderColor: 'rgba(128, 255, 102, 1)',
       borderWidth: 1,
     }],
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
-      <h1 className="text-4xl font-bold mb-6">Security Event Dashboard</h1>
+      <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-12">Security Event Dashboard</h1>
       
-      <div className="flex justify-between mb-4">
-        <div>
-          <label htmlFor="startDate" className="mr-2">Start Date:</label>
-          <input
-            type="date"
-            id="startDate"
-            name="startDate"
-            className="text-black"
-            onChange={handleDateChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="endDate" className="mr-2">End Date:</label>
-          <input
-            type="date"
-            id="endDate"
-            name="endDate"
-            className="text-black"
-            onChange={handleDateChange}
-          />
-        </div>
-      </div>
+      <div className="flex flex-col md:flex-row justify-between my-8">
+  <div className='md:ml-2 mb-4 md:mb-0'>
+    <label htmlFor="startDate" className="mr-2 mb-2 md:text-2xl text-1xl">Start Date:</label>
+    <input
+      type="date"
+      id="startDate"
+      name="startDate"
+      className="text-black rounded-lg p-2 md:text-2xl text-1xl"
+      onChange={handleDateChange}
+    />
+  </div>
+  <p className='my-2 md:text-2xl text-1xl'>← Sorting Options →</p>
+  <div className='md:mr-2'>
+    <label htmlFor="endDate" className="mr-2 mb-2 md:text-2xl text-1xl">End Date:</label>
+    <input
+      type="date"
+      id="endDate"
+      name="endDate"
+      className="text-black rounded-lg p-2 md:text-2xl text-1xl"
+      onChange={handleDateChange}
+    />
+  </div>
+</div>
+
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-        <div className="bg-gray-800 p-5 rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">
+        <div className="bg-gray-800 p-5 rounded-[20px] m-2 card">
           <h2 className="text-xl mb-4">Event Types</h2>
           <Bar data={eventTypesData} />
         </div>
-        <div className="bg-gray-800 p-5 rounded-lg">
+        <div className="bg-gray-800 p-5 rounded-[20px] m-2 card">
           <h2 className="text-xl mb-4">Signatures</h2>
           <Pie data={signaturesData} />
         </div>
-        <div className="bg-gray-800 p-5 rounded-lg">
+        <div className="bg-gray-800 p-5 rounded-[20px] m-2 card">
           <h2 className="text-xl mb-4">Severities</h2>
           <Line data={severitiesData} />
         </div>
-        <div className="bg-gray-800 p-5 rounded-lg">
+        <div className="bg-gray-800 p-5 rounded-[20px] m-2 card">
           <h2 className="text-xl mb-4">Source IPs</h2>
           <Doughnut data={srcIpsData} />
         </div>
-        <div className="bg-gray-800 p-5 rounded-lg">
+        <div className="bg-gray-800 p-5 rounded-[20px] m-2 card">
           <h2 className="text-xl mb-4">Destination IPs</h2>
           <Radar data={destIpsData} />
         </div>
